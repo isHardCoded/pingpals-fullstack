@@ -27,7 +27,7 @@ class UserController {
             const { user, token } = await UserService.login({ username, password });
             return res.status(200).send({ user, token });
         } catch(error) {
-            return res.status(400).send({error: error.message});
+            return res.status(400).send({error: 'Invalid login credentials'});
         }
     }
 }

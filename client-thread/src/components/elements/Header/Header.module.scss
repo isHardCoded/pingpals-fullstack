@@ -1,0 +1,25 @@
+.header {
+  background-color: #0C1421;
+  padding: 10px 0;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      color: white;
+    }
+
+    div {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
+      img {
+        width: 32px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

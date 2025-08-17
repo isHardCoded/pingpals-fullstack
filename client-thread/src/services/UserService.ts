@@ -29,10 +29,12 @@ export const userService = {
             body: JSON.stringify({ username, password }),
         })
 
+        const data = await response.json();
+
         if (!response.ok) {
-            throw new Error(response.statusText);
+            throw new Error(data.error || 'Unknown error');
         }
 
-        return await response.json();
+        return data;
     }
 }
