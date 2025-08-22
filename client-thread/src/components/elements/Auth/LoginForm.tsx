@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./Auth.module.scss";
 import { useAuth } from "../../../hooks/useAuth.ts";
-import { PulseLoader } from "react-spinners";
+import Button from "../../ui/Button.tsx";
 
 const LoginForm = () => {
     const [username, setUsername] = React.useState<string>('')
@@ -48,7 +48,7 @@ const LoginForm = () => {
             <input type="password" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <a href='#'>Forgot password?</a>
-        <button type="submit" >{loading && <span><PulseLoader color={"#FFFFFF"} size={5} /></span>} <p>Login</p></button>
+        <Button loading={loading} type='submit' isLoader={true} value='Sign In' />
         {error && <p className={styles.error}>{error}</p>}
     </form>
 }

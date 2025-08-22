@@ -3,7 +3,7 @@ import { userService } from "../../../services/UserService.ts";
 import { useNavigate } from "react-router-dom";
 
 import styles from './Auth.module.scss'
-import { PulseLoader } from "react-spinners";
+import Button from "../../ui/Button.tsx";
 
 const RegisterForm = () => {
     const [username, setUsername] = React.useState<string>('')
@@ -46,7 +46,7 @@ const RegisterForm = () => {
             <input type="password" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <a href='#'>Forgot password?</a>
-        <button type="submit"> {loading && <span><PulseLoader color={"#FFFFFF"} size={5} /></span>} <p>Sign Up</p></button>
+        <Button loading={loading} isLoader={true} value='Sign Up' type='submit' />
         {error && <p className={styles.error}>{error}</p>}
     </form>
 

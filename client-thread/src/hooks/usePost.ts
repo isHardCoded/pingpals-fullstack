@@ -11,12 +11,11 @@ export const usePost = () => {
 
     const addPost = async (post: Post, token: string) => {
         await postService.addPost({ post, token });
-        await getPosts();
     }
 
     React.useEffect(() => {
         getPosts();
-    })
+    }, [])
 
     return {
         posts,
