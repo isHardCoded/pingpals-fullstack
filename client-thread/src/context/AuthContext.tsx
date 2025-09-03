@@ -1,10 +1,10 @@
 import React from 'react'
-import type { User } from "../models/User.ts";
+import type { AuthData } from "../models/User.ts";
 
 interface AuthContextProps {
-    user: User | null;
+    user: AuthData | null;
     token: string | null,
-    login: (user: User, token: string) => void,
+    login: (user: AuthData, token: string | null) => void,
     logout: () => void,
 }
 

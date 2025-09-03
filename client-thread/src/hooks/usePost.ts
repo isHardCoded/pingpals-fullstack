@@ -9,18 +9,18 @@ export const usePost = () => {
         setPosts(await postService.getPosts());
     }
 
-    const addPost = async (post: Post, token: string) => {
-        await postService.addPost({ post, token });
+    const addPost = async ({post, token}: {post: Post, token: string | null}) => {
+        const createdPost = await postService.addPost({ post, token });
+        setPosts(prev => [...prev, createdPost]);
     }
 
     React.useEffect(() => {
         getPosts();
-    }, [])
+    }, [posts])
 
     return {
         posts,
         setPosts,
-        getPosts,
         addPost
     }
 

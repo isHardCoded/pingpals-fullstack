@@ -1,5 +1,5 @@
 import type { Post } from "../models/Post.ts";
-import { API_URL } from "../contants.ts";
+import { API_URL } from "../constants.ts";
 
 export const postService = {
     getPosts: async () => {
@@ -14,7 +14,7 @@ export const postService = {
         return data;
     },
 
-    addPost: async ({ post, token }: { post: Post, token: string }) => {
+    addPost: async ({ post, token }: { post: Post, token: string | null }) => {
         const response = await fetch(`${API_URL}/posts/add`, {
             method: "POST",
             headers: {

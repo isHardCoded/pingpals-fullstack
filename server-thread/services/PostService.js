@@ -25,6 +25,22 @@ class PostService {
             }
         })
     }
+
+    updatePost = async ({ id, content }) => {
+        return prisma.post.update({
+            where: { id },
+            data: {
+                content,
+                updatedAt: new Date(),
+            }
+        })
+    }
+
+    deletePost = async ({ id }) => {
+        return prisma.post.delete({
+            where: { id },
+        })
+    }
 }
 
 export default new PostService();

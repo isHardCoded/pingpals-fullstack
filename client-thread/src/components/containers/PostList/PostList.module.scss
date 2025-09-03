@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-direction: column;
+
+  list-style: none;
+
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+
+  max-width: 550px;
+
+  margin-top: 30px;
+}

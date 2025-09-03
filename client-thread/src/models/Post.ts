@@ -1,7 +1,7 @@
 export type Post = {
     id: number;
-    authorId: number;
+    authorId: number | undefined;
     content: string;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

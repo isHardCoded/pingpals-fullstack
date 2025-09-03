@@ -1,8 +1,8 @@
-import type {User} from "../models/User.ts";
-import { API_URL } from "../contants.ts";
+import type { LoginData, RegisterData } from "../models/User.ts";
+import { API_URL } from "../constants.ts";
 
 export const userService = {
-    register: async ({ username, password }: User) => {
+    register: async ({ username, password }: RegisterData) => {
         const response = await fetch(`${API_URL}/users/register`, {
             method: "POST",
             headers: {
@@ -20,7 +20,7 @@ export const userService = {
         return data;
     },
 
-    login: async ({ username, password }: User) => {
+    login: async ({ username, password }: LoginData) => {
         const response = await fetch(`${API_URL}/users/login`, {
             method: "POST",
             headers: {

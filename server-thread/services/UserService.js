@@ -42,7 +42,7 @@ class UserService {
             username: user.username
         }, process.env.SECRET_KEY, { expiresIn: '7d' })
 
-        return { user, token }
+        return { id: user.id, token }
     }
 }
 

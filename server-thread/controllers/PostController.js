@@ -24,6 +24,34 @@ class PostController {
             return res.status(500).json({ error: `Failed to addPost: ${error}` });
         }
     }
+
+    updatePost = async (req, res) => {
+        const { content } = req.body;
+        const id = parseInt(req.params.id);
+
+        if (!content) return res.status(400).json({ error: 'Content cannot be empty' });
+        if (!id) return res.status(400).json({ error: 'Post ID is required' });
+
+        try {
+            const post = await PostService.updatePost({ content, id });
+            return res.status(200).json(post);
+        } catch (error) {
+            return res.status(500).json({ error: `Failed to updatePost: ${error}` });
+        }
+    }
+
+    deletePost = async (req, res) => {
+        const id = parseInt(req.params.id);
+
+        if (!id) return res.status(400).json({ error: 'Post ID is required' });
+
+        try {
+            await PostService.deletePost({ id });
+            return res.status(200).json({ message: 'Post deleted successfully' });
+        } catch (error) {
+            return res.status(500).json({ error: `Failed to deletePost: ${error}` });
+        }
+    }
 }
 
 export default new PostController();

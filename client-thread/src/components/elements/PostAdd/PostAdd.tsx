@@ -14,15 +14,16 @@ const PostAdd = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const newPost = {
-            id: 1,
+        const post = {
             content,
             authorId: user?.id,
             createdAt: new Date(),
             updatedAt: new Date(),
         }
 
-        await addPost({ newPost }, token);
+        await addPost({ post, token });
+
+        setContent('');
     }
 
     return <form className={styles.form} onSubmit={handleSubmit}>

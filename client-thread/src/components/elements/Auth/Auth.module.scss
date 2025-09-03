@@ -1,45 +1,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin: 30px 0;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    label {
-      color: #0C1421;
-      font-size: 16px;
-    }
-
-    input {
-      border: 1px solid #D4D7E3;
-      background-color: #F7FBFF;
-      font-size: 16px;
-      padding: 12px;
-      border-radius: 5px;
-
-      outline: none;
-
-      &:focus {
-        border: 1px solid gray;
-      }
-
-      &::placeholder {
-        color: #8897AD;
-      }
-    }
-  }
-
-  a {
-    color: #1E4AE9;
-    text-align: right;
-  }
-
-  .error {
-    color: #EB5757;
-    text-align: center;
-  }
+  gap: 10px;
+  margin: 20px 0;
 }

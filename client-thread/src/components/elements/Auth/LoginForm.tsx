@@ -23,7 +23,8 @@ const LoginForm = () => {
         setTimeout(async () => {
             try {
                 const user = await userService.login({ username, password });
-                login(user.username, user.password);
+                console.log(user)
+                login({ id: user.id, username: user.username, token: user.token});
                 navigate("/");
                 setError(null)
             } catch (error) {
