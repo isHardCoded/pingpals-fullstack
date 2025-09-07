@@ -1,17 +1,17 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from "./providers/AuthProvider.tsx";
-import HomePage from "./pages/HomePage.tsx";
-import AuthPage from "./pages/AuthPage.tsx";
+
+import HomePage from './pages/HomePage.tsx'
+import RegisterPage from './pages/RegisterPage.tsx'
+import LoginPage from './pages/LoginPage.tsx'
+import { PAGES } from './shared/config/Pages.config.ts'
 
 createRoot(document.getElementById('root')!).render(
-    <AuthProvider>
-        <Router>
-            <Routes>
-                <Route path={'/'} element={<HomePage />} />
-                <Route path={'/login'} element={<AuthPage type='login' />} />
-                <Route path={'/register'} element={<AuthPage type='register' />} />
-            </Routes>
-        </Router>
-    </AuthProvider>
+	<Router>
+		<Routes>
+			<Route path={PAGES.HOME} element={<HomePage />} />
+			<Route path={PAGES.SIGN_IN} element={<LoginPage />} />
+			<Route path={PAGES.SIGN_UP} element={<RegisterPage />} />
+		</Routes>
+	</Router>
 )

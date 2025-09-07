@@ -1,18 +1,18 @@
-import { usePost } from "../../../hooks/usePost.ts";
-import PostBlock from "../../elements/PostBlock/PostBlock.tsx";
-
-import styles from "./PostList.module.scss";
+import { usePost } from '../../../hooks/usePost.ts'
+import PostBlock from '../../elements/PostBlock/PostBlock.tsx'
 
 const PostList = () => {
-    const { posts } = usePost()
+	const { posts } = usePost()
 
-    return <ul className={styles.list}>
-        {posts.map(post => (
-            <li key={post.id}>
-                <PostBlock {...post} />
-            </li>
-        ))}
-    </ul>
+	return (
+		<ul>
+			{posts.map(post => (
+				<li key={post.id}>
+					<PostBlock {...post} />
+				</li>
+			))}
+		</ul>
+	)
 }
 
 export default PostList
