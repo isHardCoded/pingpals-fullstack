@@ -1,22 +1,23 @@
 import { API_URL } from '../shared/constants.ts'
+import type { RegisterData } from '../shared/types/User.ts'
 
-export const userService = {
-	register: async ({ username, password }) => {
+export const USER_SERVICE = {
+	register: async (data: RegisterData) => {
 		const response = await fetch(`${API_URL}/users/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ username, password }),
+			body: JSON.stringify(data),
 		})
 
-		const data = await response.json()
+		const responseData = await response.json()
 
 		if (!response.ok) {
-			throw new Error(data.error || 'Unknown error')
+			throw new Error(responseData.error || 'Unknown error')
 		}
 
-		return data
+		return responseData
 	},
 
 	login: async ({ username, password }) => {

@@ -2,16 +2,20 @@ import UserService from '../services/UserService.js'
 
 class UserController {
 	register = async (req, res) => {
-		const { username, password } = req.body
+		const { firstname, lastname, username, email, password } = req.body
 
-		if (!username || !password) {
-			return res
-				.status(400)
-				.send({ error: 'Username and password are required' })
+		if (!firstname || !lastname || !email || !username || !password) {
+			return res.status(400).send({ error: 'All fields are required' })
 		}
 
 		try {
-			const user = await UserService.register({ username, password })
+			const user = await UserService.register({
+				firstname,
+				lastname,
+				username,
+				email,
+				password,
+			})
 			return res.status(201).send(user)
 		} catch (error) {
 			return res.status(409).send({ error: error.message })

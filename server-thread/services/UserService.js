@@ -3,11 +3,13 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 class UserService {
-	register = async ({ username, password }) => {
+	register = async ({ firstname, lastname, username, email, password }) => {
 		const passwordHash = await bcrypt.hash(password, 10)
 
-		const existingUser = await prisma.user.findUnique({
-			where: { username },
+		const existingUser = await prisma.user.findFirst({
+			where: {
+				OR: [{ username }, { email }],
+			},
 		})
 
 		if (existingUser) {
@@ -16,6 +18,9 @@ class UserService {
 
 		return prisma.user.create({
 			data: {
+				firstname,
+				lastname,
+				email,
 				username,
 				password: passwordHash,
 			},
