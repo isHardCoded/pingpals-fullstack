@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { PAGES } from '../../../shared/config/Pages.config'
 import InputItem from './InputItem'
 import React, { useState } from 'react'
@@ -14,10 +14,10 @@ const initialState = {
 
 export default function RegisterForm() {
 	const [data, setData] = useState(initialState)
-
-	// вынести стейты из компонента
 	const [error, setError] = useState<string | null>(null)
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState<boolean>(false)
+
+	const navigate = useNavigate()
 
 	function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
 		setError(null)
@@ -32,6 +32,7 @@ export default function RegisterForm() {
 		setTimeout(async () => {
 			try {
 				await USER_SERVICE.register(data)
+				navigate(PAGES.SIGN_IN)
 			} catch (error) {
 				if (error instanceof Error) {
 					setError(error.message)

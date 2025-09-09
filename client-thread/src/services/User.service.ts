@@ -1,5 +1,5 @@
 import { API_URL } from '../shared/constants.ts'
-import type { RegisterData } from '../shared/types/User.ts'
+import type { LoginData, RegisterData } from '../shared/types/User.ts'
 
 export const USER_SERVICE = {
 	register: async (data: RegisterData) => {
@@ -20,21 +20,21 @@ export const USER_SERVICE = {
 		return responseData
 	},
 
-	login: async ({ username, password }) => {
+	login: async (data: LoginData) => {
 		const response = await fetch(`${API_URL}/users/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ username, password }),
+			body: JSON.stringify(data),
 		})
 
-		const data = await response.json()
+		const responseData = await response.json()
 
 		if (!response.ok) {
-			throw new Error(data.error || 'Unknown error')
+			throw new Error(responseData.error || 'Unknown error')
 		}
 
-		return data
+		return responseData
 	},
 }

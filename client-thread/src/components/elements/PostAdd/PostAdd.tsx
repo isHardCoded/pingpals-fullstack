@@ -5,7 +5,7 @@ import { usePost } from '../../../hooks/usePost.ts'
 const PostAdd = () => {
 	const [content, setContent] = React.useState<string>('')
 
-	const { addPost } = usePost()
+	// const { addPost } = usePost()
 	// const { token } = useAuth();
 	// const { user } = useAuth();
 
