@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 			}
 			setUser(null)
 			setToken(null)
-			throw err
 		} finally {
 			setLoading(false)
 		}

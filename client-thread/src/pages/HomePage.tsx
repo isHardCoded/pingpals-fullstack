@@ -1,15 +1,14 @@
-import Header from '../components/elements/Header/Header.tsx'
 import PostList from '../components/containers/PostList/PostList.tsx'
 import PostAdd from '../components/elements/PostAdd/PostAdd.tsx'
+import Layout from './Layout.tsx'
 
 const HomePage = () => {
 	return (
 		<>
-			<Header />
-			<div className='container'>
+			<Layout>
 				<PostAdd />
 				<PostList />
-			</div>
+			</Layout>
 		</>
 	)
 }

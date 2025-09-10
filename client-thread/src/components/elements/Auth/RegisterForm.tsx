@@ -49,14 +49,14 @@ export default function RegisterForm() {
 		<form onSubmit={handleSubmit} className='flex flex-col gap-5'>
 			<div className='flex justify-between gap-5'>
 				<InputItem
-					placeholder='First Name'
+					placeholder='Имя'
 					name='firstname'
 					type='text'
 					value={data.firstname}
 					onChange={handleChange}
 				/>
 				<InputItem
-					placeholder='Last Name'
+					placeholder='Фамилия'
 					name='lastname'
 					type='text'
 					value={data.lastname}
@@ -64,45 +64,44 @@ export default function RegisterForm() {
 				/>
 			</div>
 			<InputItem
-				placeholder='Username'
+				placeholder='Имя пользователя'
 				name='username'
 				type='text'
 				value={data.username}
 				onChange={handleChange}
 			/>
 			<InputItem
-				placeholder='Email'
+				placeholder='Почта'
 				name='email'
 				type='email'
 				value={data.email}
 				onChange={handleChange}
 			/>
 			<InputItem
-				placeholder='Password'
+				placeholder='Пароль'
 				name='password'
 				type='password'
 				value={data.password}
 				onChange={handleChange}
 			/>
 
-			{error && <p className='text-red-600 text-sm text-center'>{error}</p>}
+			{error && <p className='text-rose-600 text-md text-center'>{error}</p>}
 
 			<button
 				type='submit'
 				disabled={loading}
-				className={`bg-indigo-800 text-white rounded-md p-2 cursor-pointer hover:bg-indigo-800/90 ${
+				className={`bg-blue-700 text-white rounded-md text-base p-2 cursor-pointer hover:bg-blue-700/90 ${
 					loading ? 'opacity-50 cursor-not-allowed' : ''
 				}`}
 			>
-				{loading ? 'Signing Up...' : 'Sign Up'}
+				{loading ? 'Signing Up...' : 'Зарегистрироваться'}
 			</button>
 			<p className='text-center'>
-				Have an account?
 				<Link
-					className='ml-2 text-indigo-900 font-medium underline'
+					className='ml-2 text-sm text-blue-800'
 					to={{ pathname: PAGES.SIGN_IN }}
 				>
-					Sign In
+					Войти →
 				</Link>
 			</p>
 		</form>

@@ -5,7 +5,7 @@ const PostList = () => {
 	const { posts } = usePost()
 
 	return (
-		<ul>
+		<ul className='bg-gray-950'>
 			{posts.map(post => (
 				<li key={post.id}>
 					<PostBlock {...post} />

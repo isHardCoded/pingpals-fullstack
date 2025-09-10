@@ -20,49 +20,45 @@ export default function LoginForm() {
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
-		try {
-			await login(data)
-			navigate(PAGES.HOME)
-		} catch {
-			// Ошибка отображается из контекста
-		}
+
+		await login(data)
+		navigate(PAGES.HOME)
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+		<form onSubmit={handleSubmit} className='flex flex-col gap-5 '>
 			<InputItem
-				placeholder='Username'
+				placeholder='Имя пользователя'
 				name='username'
 				type='text'
 				value={data.username}
 				onChange={handleChange}
 			/>
 			<InputItem
-				placeholder='Password'
+				placeholder='Пароль'
 				name='password'
 				type='password'
 				value={data.password}
 				onChange={handleChange}
 			/>
 
-			{error && <p className='text-red-600 text-sm text-center'>{error}</p>}
+			{error && <p className='text-rose-700 text-sm text-center'>{error}</p>}
 
 			<button
 				type='submit'
 				disabled={loading}
-				className={`bg-indigo-800 text-white rounded-md p-2 cursor-pointer hover:bg-indigo-800/90 ${
+				className={`bg-blue-700 text-white rounded-md p-2 text-base cursor-pointer hover:bg-blue-700/90 ${
 					loading ? 'opacity-50 cursor-not-allowed' : ''
 				}`}
 			>
-				{loading ? 'Signing In...' : 'Sign In'}
+				{loading ? 'Signing In...' : 'Войти'}
 			</button>
-			<p className='text-center'>
-				Have not account?
+			<p className='text-center '>
 				<Link
-					className='ml-2 text-indigo-900 font-medium underline'
+					className='ml-2 text-sm text-blue-800'
 					to={{ pathname: PAGES.SIGN_UP }}
 				>
-					Sign Up
+					Создать аккаунт →
 				</Link>
 			</p>
 		</form>
