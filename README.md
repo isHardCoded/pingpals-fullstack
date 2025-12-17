@@ -100,4 +100,3 @@ git commit -m "your commit message"
 - В будущем фронтенд может быть подключен аналогично backend.
 
 ---
-```
