@@ -1,0 +1,28 @@
+{
+  "name": "pingpals-fullstack",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.7.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write \"backend/**/*.{ts,tsx,js,json}\" \"frontend/**/*.{ts,tsx,js,json}\"",
+    "start:backend": "cd backend && bun run dev",
+    "start:frontend": "cd frontend && bun run dev",
+    "start": "bunx concurrently \"bun run start:backend\" \"bun run start:frontend\""
+  },
+  "lint-staged": {
+    "backend/**/*.{ts,tsx,js,jsx,json,md,yml,yaml}": [
+      "bunx prettier --write"
+    ],
+    "frontend/**/*.{ts,tsx,js,jsx,json,md,yml,yaml}": [
+      "bunx prettier --write"
+    ]
+  }
+}
