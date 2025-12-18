@@ -1,11 +1,9 @@
-import type { Request, Response } from 'express';
 import express from 'express';
-// import routes
-// import errorHandler
+import appRoutes from './routes/index.ts';
+import { errorHandler } from './middlewares/errorHandler.ts';
 
 export const app = express();
-app.use(express.json());
 
-app.use('/ping', (req: Request, res: Response) => {
-  return res.status(200).json({ message: 'pong' });
-});
+app.use(express.json());
+app.use('/api', appRoutes);
+app.use(errorHandler);
