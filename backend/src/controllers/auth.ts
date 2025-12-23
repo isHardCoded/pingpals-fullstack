@@ -10,13 +10,27 @@ export class AuthController {
 
   createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const user = await this.authService.getUser({ email: req.body.email });
+      const { email, username, password, firstName, lastName } = req.body;
+
+      if (!email || !username || !password) {
+        return res
+          .status(400)
+          .json({ message: 'Email, username, and password are required' });
+      }
+
+      const user = await this.authService.getUser({ email });
 
       if (user) {
         return res.status(409).json({ message: 'Email already exists' });
       }
 
-      const newUser = await this.authService.createUser(req.body);
+      const newUser = await this.authService.createUser({
+        email,
+        username,
+        password,
+        firstName,
+        lastName,
+      });
       return res.status(201).json(newUser);
     } catch (e) {
       next(e);
