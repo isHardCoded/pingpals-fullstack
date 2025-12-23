@@ -1,22 +1,40 @@
-import { DataTypes } from 'sequelize';
+import {
+  Model,
+  DataTypes,
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
+} from 'sequelize';
 import type { Post as PostTypes } from './types.ts';
 import { sequelize } from '../../config/database.ts';
 
-export const Post = sequelize.define<PostTypes>(
-  'Post',
+export class Post extends Model<
+  InferAttributes<PostTypes>,
+  InferCreationAttributes<PostTypes>
+> {
+  declare id: CreationOptional<number>;
+  declare title: string;
+  declare content: string;
+}
+
+Post.init(
   {
     id: {
-      primaryKey: true,
       type: DataTypes.INTEGER.UNSIGNED,
+      primaryKey: true,
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     content: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
+    sequelize,
     tableName: 'posts',
   },
 );
