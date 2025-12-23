@@ -2,7 +2,11 @@ import type { NextFunction, Request, Response } from 'express';
 import type { AuthService } from '../services/auth.ts';
 
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  private authService: AuthService;
+
+  constructor(authService: AuthService) {
+    this.authService = authService;
+  }
 
   createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {

@@ -1,9 +1,12 @@
-import { ModelStatic, InferAttributes } from 'sequelize';
+import type { ModelStatic, InferAttributes } from 'sequelize';
 import type { User as UserModel } from '../models/User/User.ts';
-import { CreateUserDto, GetUserDto } from '../dto/user/index.ts';
+import type { CreateUserDto, GetUserDto } from '../dto/user/index.ts';
 
 export class AuthService {
-  constructor(private userModel: ModelStatic<UserModel>) {}
+  private userModel: ModelStatic<UserModel>;
+  constructor(userModel: ModelStatic<UserModel>) {
+    this.userModel = userModel;
+  }
 
   createUser = async (data: CreateUserDto) => {
     return await this.userModel.create(data);
