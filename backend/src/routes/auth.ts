@@ -8,6 +8,6 @@ const authController = new AuthController(authService);
 
 const router = Router();
 
-router.get('/register', authController.createUser);
+router.post('/register', authController.createUser);
 
 export default router;
