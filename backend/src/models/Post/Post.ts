@@ -1,12 +1,11 @@
-import {
-  Model,
-  DataTypes,
-  InferAttributes,
-  InferCreationAttributes,
-  CreationOptional,
-} from 'sequelize';
 import type { Post as PostTypes } from './types.ts';
 import { sequelize } from '../../config/database.ts';
+import type {
+  CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+} from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
 export class Post extends Model<
   InferAttributes<PostTypes>,
