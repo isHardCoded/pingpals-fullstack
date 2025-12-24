@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import postRoutes from './post.ts';
-import authRoutes from './auth.ts';
+import postRoutes from './post.js';
+import authRoutes from './auth.js';
 
 const router = Router();
 

@@ -1,6 +1,6 @@
 import { InferAttributes, ModelStatic } from 'sequelize';
 import type { User as UserModel } from '../models/User/User.ts';
-import { CreateUserDto, GetUserDto } from '../dto/user/index.ts';
+import { CreateUserDto, GetUserDto } from '../dto/user/index.js';
 
 export class UserService {
   private userModel: ModelStatic<UserModel>;

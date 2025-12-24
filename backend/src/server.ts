@@ -1,6 +1,6 @@
-import { app } from './app.ts';
-import { config } from './config/config.ts';
-import { sequelize } from './config/database.ts';
+import { app } from './app.js';
+import { config } from './config/config.js';
+import { sequelize } from './config/database.js';
 
 async function startServer() {
   try {

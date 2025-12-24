@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
-import { PostService } from '../services/post.ts';
+import { PostService } from '../services/post.js';
 
 const postService = new PostService();
 

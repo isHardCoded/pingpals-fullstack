@@ -1,6 +1,6 @@
-import { UserService } from './user.ts';
-import { LoginUserDto } from '../dto/user/login.ts';
-import { RegisterUserDto } from '../dto/user/register.ts';
+import { UserService } from './user.js';
+import { LoginUserDto } from '../dto/user/login.js';
+import { RegisterUserDto } from '../dto/user/register.js';
 
 export class AuthService {
   constructor(private userService: UserService) {}

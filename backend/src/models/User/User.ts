@@ -5,7 +5,7 @@ import type {
 } from 'sequelize';
 import { DataTypes, Model } from 'sequelize';
 
-import { sequelize } from '../../config/database.ts';
+import { sequelize } from '../../config/database.js';
 
 export class User extends Model<
   InferAttributes<User>,
