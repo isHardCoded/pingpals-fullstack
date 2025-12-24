@@ -1,20 +1,27 @@
-import type { ModelStatic, InferAttributes } from 'sequelize';
-import type { User as UserModel } from '../models/User/User.ts';
-import type { CreateUserDto, GetUserDto } from '../dto/user/index.ts';
+import { UserService } from './user.ts';
+import { LoginUserDto } from '../dto/user/login.ts';
+import { RegisterUserDto } from '../dto/user/register.ts';
 
 export class AuthService {
-  private userModel: ModelStatic<UserModel>;
-  constructor(userModel: ModelStatic<UserModel>) {
-    this.userModel = userModel;
-  }
+  constructor(private userService: UserService) {}
 
-  createUser = async (data: CreateUserDto) => {
-    return await this.userModel.create(data);
+  register = async (data: RegisterUserDto) => {
+    const existingUser = await this.userService.getUser(data);
+
+    if (existingUser) {
+      throw new Error('User alredy exists');
+    }
+
+    return await this.userService.create(data);
   };
+  login = async (data: LoginUserDto) => {
+    const user = await this.userService.getUser(data);
 
-  getUser = async (obj: GetUserDto) => {
-    return await this.userModel.findOne({
-      where: obj as Partial<InferAttributes<UserModel>>,
-    });
+    if (!user) {
+      throw new Error('Invalid credentials');
+    }
+
+    // TODO: сделать проверку пароля, jwt hash
+    return user;
   };
 }

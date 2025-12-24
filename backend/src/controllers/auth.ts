@@ -8,30 +8,19 @@ export class AuthController {
     this.authService = authService;
   }
 
-  createUser = async (req: Request, res: Response, next: NextFunction) => {
+  register = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { email, username, password, firstName, lastName } = req.body;
+      const user = await this.authService.register(req.body);
+      return res.status(201).json({ data: user });
+    } catch (e) {
+      next(e);
+    }
+  };
 
-      if (!email || !username || !password) {
-        return res
-          .status(400)
-          .json({ message: 'Email, username, and password are required' });
-      }
-
-      const user = await this.authService.getUser({ email });
-
-      if (user) {
-        return res.status(409).json({ message: 'Email already exists' });
-      }
-
-      const newUser = await this.authService.createUser({
-        email,
-        username,
-        password,
-        firstName,
-        lastName,
-      });
-      return res.status(201).json(newUser);
+  login = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const user = await this.authService.login(req.body);
+      return res.status(200).json(user);
     } catch (e) {
       next(e);
     }
