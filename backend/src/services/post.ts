@@ -1,4 +1,4 @@
-import { Post } from '../models/Post/Post.ts';
+import { Post } from '../models/Post/Post.js';
 
 export class PostService {
   async getAllPosts() {

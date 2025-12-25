@@ -1,5 +1,5 @@
 import type { Post as PostTypes } from './types.ts';
-import { sequelize } from '../../config/database.ts';
+import { sequelize } from '../../config/database.js';
 import type {
   CreationOptional,
   InferAttributes,

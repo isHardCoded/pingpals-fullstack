@@ -1,2 +1,4 @@
-export * from './create-user.ts';
-export * from './get-user.ts';
+export * from './create.js';
+export * from './get.js';
+export * from './login.js';
+export * from './register.js';
