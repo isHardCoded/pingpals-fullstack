@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import type { AuthService } from '../services/auth.js';
+import { AppError } from '../errors/app.js';
 
 export class AuthController {
   private authService: AuthService;
@@ -18,8 +19,14 @@ export class AuthController {
   };
 
   login = async (req: Request, res: Response, next: NextFunction) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      throw new AppError('Username and password are required', 400);
+    }
+
     try {
-      const user = await this.authService.login(req.body);
+      const user = await this.authService.login({ username, password });
       return res.status(200).json(user);
     } catch (e) {
       next(e);
