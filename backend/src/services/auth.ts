@@ -1,6 +1,7 @@
 import { UserService } from './user.js';
 import { LoginUserDto } from '../dto/user/login.js';
 import { RegisterUserDto } from '../dto/user/register.js';
+import { AppError } from '../errors/app.js';
 
 export class AuthService {
   constructor(private userService: UserService) {}
@@ -9,7 +10,7 @@ export class AuthService {
     const existingUser = await this.userService.getUser(data);
 
     if (existingUser) {
-      throw new Error('User alredy exists');
+      throw new AppError('User already exists', 409);
     }
 
     return await this.userService.create(data);
@@ -18,7 +19,7 @@ export class AuthService {
     const user = await this.userService.getUser(data);
 
     if (!user) {
-      throw new Error('Invalid credentials');
+      throw new AppError('Invalid credentials', 401);
     }
 
     // TODO: сделать проверку пароля, jwt hash

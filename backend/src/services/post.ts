@@ -1,7 +1,23 @@
-import { Post } from '../models/Post/Post.js';
+import { ModelStatic } from 'sequelize';
+import type { Post as PostModel } from '../models/Post/Post.js';
+import { AppError } from '../errors/app.js';
 
 export class PostService {
-  async getAllPosts() {
-    return await Post.findAll();
-  }
+  constructor(private postModel: ModelStatic<PostModel>) {}
+
+  getAllPosts = async () => {
+    return await this.postModel.findAll();
+  };
+
+  getPostById = async (id: string) => {
+    const post = await this.postModel.findOne({
+      where: { id: Number(id) },
+    });
+
+    if (!post) {
+      throw new AppError('Post not found', 404);
+    }
+
+    return post;
+  };
 }
