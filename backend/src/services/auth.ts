@@ -6,11 +6,11 @@ import { AppError } from '../errors/app.js';
 export class AuthService {
   constructor(private userService: UserService) {}
 
-  register = async (data: RegisterUserDto) => {
+  register = (data: RegisterUserDto) => {
     return this.userService.create(data);
   };
 
-  login = async (data: LoginUserDto) => {
+  login = (data: LoginUserDto) => {
     const user = this.userService.getUser(data);
 
     if (!user) {
