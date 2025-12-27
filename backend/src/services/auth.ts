@@ -19,14 +19,21 @@ export class AuthService {
     return this.userService.create({ ...data, password: hash });
   };
 
-  login = (data: LoginUserDto) => {
-    const user = this.userService.getUser(data);
+  login = async (data: LoginUserDto) => {
+    const user = await this.userService.getUser(data);
 
     if (!user) {
       throw new AppError('Invalid credentials', 401);
     }
 
-    // TODO: сделать проверку пароля, jwt hash
-    return user;
+    const isValid = await bcrypt.compare(data.password, user.password);
+
+    if (!isValid) {
+      throw new AppError('Invalid credentials', 401);
+    }
+
+    const tokens = this.tokenService.generateTokens({ id: user.id });
+
+    return { user, ...tokens };
   };
 }
