@@ -13,4 +13,8 @@ export class TokenService {
 
     return { accessToken, refreshToken };
   }
+
+  async saveRefreshToken(userId: number, token: string) {
+    await Token.create({ userId, token });
+  }
 }
