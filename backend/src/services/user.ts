@@ -1,6 +1,7 @@
-import { InferAttributes, ModelStatic } from 'sequelize';
+import { InferAttributes, ModelStatic, UniqueConstraintError } from 'sequelize';
 import type { User as UserModel } from '../models/User/User.ts';
 import { CreateUserDto, GetUserDto } from '../dto/user/index.js';
+import { AppError } from '../errors/app.js';
 
 export class UserService {
   constructor(private userModel: ModelStatic<UserModel>) {}
@@ -12,6 +13,10 @@ export class UserService {
   };
 
   create = async (data: CreateUserDto) => {
-    return this.userModel.create(data);
+    try {
+      return await this.userModel.create(data);
+    } catch (e) {
+      throw new AppError('User already exists', 409);
+    }
   };
 }

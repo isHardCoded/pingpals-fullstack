@@ -7,16 +7,11 @@ export class AuthService {
   constructor(private userService: UserService) {}
 
   register = async (data: RegisterUserDto) => {
-    const existingUser = await this.userService.getUser(data);
-
-    if (existingUser) {
-      throw new AppError('User already exists', 409);
-    }
-
-    return await this.userService.create(data);
+    return this.userService.create(data);
   };
+
   login = async (data: LoginUserDto) => {
-    const user = await this.userService.getUser(data);
+    const user = this.userService.getUser(data);
 
     if (!user) {
       throw new AppError('Invalid credentials', 401);
