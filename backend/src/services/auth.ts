@@ -2,12 +2,21 @@ import { UserService } from './user.js';
 import { LoginUserDto } from '../dto/user/login.js';
 import { RegisterUserDto } from '../dto/user/register.js';
 import { AppError } from '../errors/app.js';
+import { TokenService } from './token.js';
+
+import bcrypt from 'bcrypt';
+
+const SALT = 10;
 
 export class AuthService {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private tokenService: TokenService,
+  ) {}
 
-  register = (data: RegisterUserDto) => {
-    return this.userService.create(data);
+  register = async (data: RegisterUserDto) => {
+    const hash = await bcrypt.hash(data.password, SALT);
+    return this.userService.create({ ...data, password: hash });
   };
 
   login = (data: LoginUserDto) => {
