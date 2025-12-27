@@ -2,27 +2,38 @@ import { UserService } from './user.js';
 import { LoginUserDto } from '../dto/user/login.js';
 import { RegisterUserDto } from '../dto/user/register.js';
 import { AppError } from '../errors/app.js';
+import { TokenService } from './token.js';
+
+import bcrypt from 'bcrypt';
+
+const SALT = 10;
 
 export class AuthService {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private tokenService: TokenService,
+  ) {}
 
   register = async (data: RegisterUserDto) => {
-    const existingUser = await this.userService.getUser(data);
-
-    if (existingUser) {
-      throw new AppError('User already exists', 409);
-    }
-
-    return await this.userService.create(data);
+    const hash = await bcrypt.hash(data.password, SALT);
+    return this.userService.create({ ...data, password: hash });
   };
+
   login = async (data: LoginUserDto) => {
-    const user = await this.userService.getUser(data);
+    const user = await this.userService.getUser({ username: data.username });
 
     if (!user) {
       throw new AppError('Invalid credentials', 401);
     }
 
-    // TODO: сделать проверку пароля, jwt hash
-    return user;
+    const isValid = await bcrypt.compare(data.password, user.password);
+
+    if (!isValid) {
+      throw new AppError('Invalid credentials', 401);
+    }
+
+    const tokens = this.tokenService.generateTokens({ id: user.id });
+
+    return { user, ...tokens };
   };
 }
