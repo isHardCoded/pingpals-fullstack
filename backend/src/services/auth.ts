@@ -20,7 +20,7 @@ export class AuthService {
   };
 
   login = async (data: LoginUserDto) => {
-    const user = await this.userService.getUser(data);
+    const user = await this.userService.getUser({ username: data.username });
 
     if (!user) {
       throw new AppError('Invalid credentials', 401);
