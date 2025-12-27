@@ -1,4 +1,3 @@
-import type { Post as PostTypes } from './types.ts';
 import { sequelize } from '../../config/database.js';
 import type {
   CreationOptional,
@@ -8,8 +7,8 @@ import type {
 import { DataTypes, Model } from 'sequelize';
 
 export class Post extends Model<
-  InferAttributes<PostTypes>,
-  InferCreationAttributes<PostTypes>
+  InferAttributes<Post>,
+  InferCreationAttributes<Post>
 > {
   declare id: CreationOptional<number>;
   declare title: string;
@@ -35,5 +34,6 @@ Post.init(
   {
     sequelize,
     tableName: 'posts',
+    timestamps: true,
   },
 );
