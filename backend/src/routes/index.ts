@@ -4,7 +4,7 @@ import authRoutes from './auth.js';
 
 const router = Router();
 
-router.use('/posts', postRoutes);
 router.use('/auth', authRoutes);
+router.use('/posts', postRoutes);
 
 export default router;

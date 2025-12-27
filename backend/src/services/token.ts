@@ -17,4 +17,16 @@ export class TokenService {
   async saveRefreshToken(userId: number, token: string) {
     await Token.create({ userId, token });
   }
+
+  validateRefreshToken(token: string) {
+    return jwt.verify(token, process.env.JWT_REFRESH_SECRET!);
+  }
+
+  async findRefreshToken(token: string) {
+    return Token.findOne({ where: { token } });
+  }
+
+  async removeRefreshToken(token: string) {
+    return Token.destroy({ where: { token } });
+  }
 }
