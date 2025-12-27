@@ -6,7 +6,7 @@ export class PostService {
   constructor(private postModel: ModelStatic<PostModel>) {}
 
   getAllPosts = async () => {
-    return await this.postModel.findAll();
+    return this.postModel.findAll();
   };
 
   getPostById = async (id: string) => {
