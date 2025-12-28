@@ -1,13 +1,15 @@
 import jwt from 'jsonwebtoken';
 import { Token } from '../models/Token/Token.js';
+import { AppError } from '../errors/app.js';
+import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from '../config/env.js';
 
 export class TokenService {
   generateTokens(payload: { id: number }) {
-    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET!, {
+    const accessToken = jwt.sign(payload, JWT_ACCESS_SECRET, {
       expiresIn: '15m',
     });
 
-    const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, {
+    const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, {
       expiresIn: '30d',
     });
 
@@ -19,7 +21,7 @@ export class TokenService {
   }
 
   validateRefreshToken(token: string) {
-    return jwt.verify(token, process.env.JWT_REFRESH_SECRET!);
+    return jwt.verify(token, JWT_REFRESH_SECRET);
   }
 
   async findRefreshToken(token: string) {

@@ -1,5 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import type { AuthService } from '../services/auth.js';
+import { AppError } from '../errors/app.js';
+import { REFRESH_TOKEN_MAX_AGE } from '../config/env.js';
 
 export class AuthController {
   private authService: AuthService;
@@ -25,7 +27,7 @@ export class AuthController {
 
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        maxAge: parseInt(process.env.REFRESH_TOKEN_MAX_AGE!, 10),
+        maxAge: REFRESH_TOKEN_MAX_AGE,
       });
 
       res.json({ accessToken, user });
