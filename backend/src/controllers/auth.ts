@@ -1,6 +1,8 @@
 import type { NextFunction, Request, Response } from 'express';
 import type { AuthService } from '../services/auth.js';
 import { AppError } from '../errors/app.js';
+import { REFRESH_TOKEN_MAX_AGE } from '../config/env.js';
+import { LoginUserDto } from '../dto/user/login.js';
 
 export class AuthController {
   private authService: AuthService;
@@ -19,17 +21,38 @@ export class AuthController {
   };
 
   login = async (req: Request, res: Response, next: NextFunction) => {
-    const { username, password } = req.body;
-
-    if (!username || !password) {
-      throw new AppError('Username and password are required', 400);
-    }
+    const { username, password } = req.body as LoginUserDto;
 
     try {
-      const user = await this.authService.login({ username, password });
-      return res.status(200).json(user);
+      const { user, accessToken, refreshToken } = await this.authService.login({
+        username,
+        password,
+      });
+
+      res.cookie('refreshToken', refreshToken, {
+        httpOnly: true,
+        maxAge: REFRESH_TOKEN_MAX_AGE,
+      });
+
+      res.json({ accessToken, user });
     } catch (e) {
       next(e);
     }
+  };
+
+  refresh = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const tokens = await this.authService.refresh(req.cookies.refreshToken);
+      res.cookie('refreshToken', tokens.refreshToken, { httpOnly: true });
+      res.json({ accessToken: tokens.accessToken });
+    } catch (e) {
+      next(e);
+    }
+  };
+
+  logout = async (req: Request, res: Response) => {
+    await this.authService.logout(req.cookies.refreshToken);
+    res.clearCookie('refreshToken');
+    res.status(204).send();
   };
 }
