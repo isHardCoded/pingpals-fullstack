@@ -24,9 +24,10 @@ export class AuthController {
     const { username, password } = req.body as LoginUserDto;
 
     try {
-      const { user, accessToken, refreshToken } = await this.authService.login(
-        req.body,
-      );
+      const { user, accessToken, refreshToken } = await this.authService.login({
+        username,
+        password,
+      });
 
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
