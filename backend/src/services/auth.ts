@@ -20,14 +20,14 @@ export class AuthService {
     return this.userService.create({ ...data, password: hash });
   };
 
-  login = async (data: LoginUserDto) => {
-    const user = await this.userService.getUser({ username: data.username });
+  login = async ({ username, password }: LoginUserDto) => {
+    const user = await this.userService.getUser({ username });
 
     if (!user) {
       throw new AppError('Invalid credentials', 401);
     }
 
-    const isValid = await bcrypt.compare(data.password, user.password);
+    const isValid = await bcrypt.compare(password, user.password);
 
     if (!isValid) {
       throw new AppError('Invalid credentials', 401);

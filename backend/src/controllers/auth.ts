@@ -2,6 +2,7 @@ import type { NextFunction, Request, Response } from 'express';
 import type { AuthService } from '../services/auth.js';
 import { AppError } from '../errors/app.js';
 import { REFRESH_TOKEN_MAX_AGE } from '../config/env.js';
+import { LoginUserDto } from '../dto/user/login.js';
 
 export class AuthController {
   private authService: AuthService;
@@ -20,6 +21,8 @@ export class AuthController {
   };
 
   login = async (req: Request, res: Response, next: NextFunction) => {
+    const { username, password } = req.body as LoginUserDto;
+
     try {
       const { user, accessToken, refreshToken } = await this.authService.login(
         req.body,
