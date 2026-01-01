@@ -1,0 +1,11 @@
+@import './design-tokens.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* TODO: подключить шрифт Poppins */
+
+/* https://www.figma.com/design/7p3AMeat79NYO6dtzZ0ieK/Simple-UI-Kit--Free-Design-System---Community-?node-id=33-420&t=qSFPQ3kkMGZILphs-0 */
