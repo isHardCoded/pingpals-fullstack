@@ -10,9 +10,14 @@
   text-decoration: none;
   color: inherit;
 
+
   gap: var(--gap-8);
   padding: var(--gap-16) var(--gap-28);
   border-radius: var(--radius-4);
+  font: var(--typography-button);
+
+  font-size: 15px;
+  letter-spacing: 0%;
 }
 
 .primary {

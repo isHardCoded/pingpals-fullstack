@@ -42,4 +42,85 @@
   --radius-20: 20px;
   --radius-24: 24px;
 
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-extra-light: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-size-7xl: 72px;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* Font Families */
+  --font-family-body: 'Poppins', sans-serif;
+  --font-family-heading: 'Poppins', sans-serif;
+  --font-family-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
+  /* Typography Presets */
+
+  /* Headings */
+  --typography-heading-1: var(--font-weight-black) var(--font-size-7xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-2: var(--font-weight-black) var(--font-size-6xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-3: var(--font-weight-bold) var(--font-size-5xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-4: var(--font-weight-bold) var(--font-size-4xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-5: var(--font-weight-semi-bold) var(--font-size-3xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-6: var(--font-weight-semi-bold) var(--font-size-2xl) / var(--line-height-tight) var(--font-family-heading);
+
+  /* Body Text */
+  --typography-body-large: var(--font-weight-regular) var(--font-size-lg) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-body: var(--font-weight-regular) var(--font-size-base) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-small: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-xs: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-relaxed) var(--font-family-body);
+
+  /* Labels and UI Text */
+  --typography-label-large: var(--font-weight-medium) var(--font-size-base) / var(--line-height-normal) var(--font-family-body);
+  --typography-label: var(--font-weight-medium) var(--font-size-sm) / var(--line-height-normal) var(--font-family-body);
+  --typography-label-small: var(--font-weight-medium) var(--font-size-xs) / var(--line-height-normal) var(--font-family-body);
+
+  /* Captions */
+  --typography-caption: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-normal) var(--font-family-body);
+  --typography-caption-small: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-normal) var(--font-family-body);
+
+  /* Buttons */
+  --typography-button-large: var(--font-weight-medium) var(--font-size-base) / var(--line-height-tight) var(--font-family-body);
+  --typography-button: var(--font-weight-medium) var(--font-size-sm) / var(--line-height-tight) var(--font-family-body);
+  --typography-button-small: var(--font-weight-medium) var(--font-size-xs) / var(--line-height-tight) var(--font-family-body);
+
+  /* Code */
+  --typography-code: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-relaxed) var(--font-family-mono);
+  --typography-code-small: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-relaxed) var(--font-family-mono);
+
+  /* Special Text Styles */
+  --typography-lead: var(--font-weight-regular) var(--font-size-xl) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-quote: var(--font-weight-light) var(--font-size-2xl) / var(--line-height-relaxed) var(--font-family-body);
 }
