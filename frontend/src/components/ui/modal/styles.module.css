@@ -1,0 +1,49 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.root {
+  background-color: white;
+  border-radius: 4px;
+  min-width: 320px;
+  max-width: 90vw;
+  padding: 36px;
+  border: 1px solid #AEB3BC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+}
+
+.title {
+  color: #14181F; /* TODO: Вынести цвет в переменную */
+  font-size: 19px;
+}
+
+.description {
+  color: #414750;
+  font-size: 16px;
+}
+
+.close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
