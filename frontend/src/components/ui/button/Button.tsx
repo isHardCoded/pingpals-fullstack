@@ -10,7 +10,7 @@ export function Button({
   href,
   className,
 }: ButtonProps) {
-  const buttonClassName = () => {
+  const buttonClassNames = () => {
     const classes = [s.root, s[appearance], className].filter(Boolean);
     return classes.join(' ');
   };
@@ -19,7 +19,7 @@ export function Button({
     return (
       <a
         href={href}
-        className={buttonClassName()}
+        className={buttonClassNames()}
         onClick={onClick}
         aria-disabled={disabled}
         role={disabled ? 'link' : undefined}
@@ -33,7 +33,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={buttonClassName()}
+      className={buttonClassNames()}
       disabled={disabled}
       onClick={onClick}
     >
