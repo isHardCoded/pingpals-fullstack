@@ -1,12 +1,12 @@
 :root {
   /* Button Colors */
-  --button-primary-default: #2871E6;
-  --button-primary-hover: #1759C4;
-  --button-primary-pressed: #0944A2;
+  --button-primary-default: #2871e6;
+  --button-primary-hover: #1759c4;
+  --button-primary-pressed: #0944a2;
 
-  --button-secondary-default: #FFFFFF;
-  --button-secondary-hover: #EDF4FF;
-  --button-secondary-pressed: #C7DDFF;
+  --button-secondary-default: #ffffff;
+  --button-secondary-hover: #edf4ff;
+  --button-secondary-pressed: #c7ddff;
 
   /* Spacing (Gaps) */
   --gap-4: 4px;
@@ -89,38 +89,60 @@
   /* Typography Presets */
 
   /* Headings */
-  --typography-heading-1: var(--font-weight-black) var(--font-size-7xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-2: var(--font-weight-black) var(--font-size-6xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-3: var(--font-weight-bold) var(--font-size-5xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-4: var(--font-weight-bold) var(--font-size-4xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-5: var(--font-weight-semi-bold) var(--font-size-3xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-6: var(--font-weight-semi-bold) var(--font-size-2xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-1: var(--font-weight-black) var(--font-size-7xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-2: var(--font-weight-black) var(--font-size-6xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-3: var(--font-weight-bold) var(--font-size-5xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-4: var(--font-weight-bold) var(--font-size-4xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-5: var(--font-weight-semi-bold) var(--font-size-3xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-6: var(--font-weight-semi-bold) var(--font-size-2xl) /
+    var(--line-height-tight) var(--font-family-heading);
 
   /* Body Text */
-  --typography-body-large: var(--font-weight-regular) var(--font-size-lg) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-body: var(--font-weight-regular) var(--font-size-base) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-body-small: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-body-xs: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-large: var(--font-weight-regular) var(--font-size-lg) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-body: var(--font-weight-regular) var(--font-size-base) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-small: var(--font-weight-regular) var(--font-size-sm) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-xs: var(--font-weight-regular) var(--font-size-xs) /
+    var(--line-height-relaxed) var(--font-family-body);
 
   /* Labels and UI Text */
-  --typography-label-large: var(--font-weight-medium) var(--font-size-base) / var(--line-height-normal) var(--font-family-body);
-  --typography-label: var(--font-weight-medium) var(--font-size-sm) / var(--line-height-normal) var(--font-family-body);
-  --typography-label-small: var(--font-weight-medium) var(--font-size-xs) / var(--line-height-normal) var(--font-family-body);
+  --typography-label-large: var(--font-weight-medium) var(--font-size-base) /
+    var(--line-height-normal) var(--font-family-body);
+  --typography-label: var(--font-weight-medium) var(--font-size-sm) /
+    var(--line-height-normal) var(--font-family-body);
+  --typography-label-small: var(--font-weight-medium) var(--font-size-xs) /
+    var(--line-height-normal) var(--font-family-body);
 
   /* Captions */
-  --typography-caption: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-normal) var(--font-family-body);
-  --typography-caption-small: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-normal) var(--font-family-body);
+  --typography-caption: var(--font-weight-regular) var(--font-size-sm) /
+    var(--line-height-normal) var(--font-family-body);
+  --typography-caption-small: var(--font-weight-regular) var(--font-size-xs) /
+    var(--line-height-normal) var(--font-family-body);
 
   /* Buttons */
-  --typography-button-large: var(--font-weight-medium) var(--font-size-base) / var(--line-height-tight) var(--font-family-body);
-  --typography-button: var(--font-weight-medium) var(--font-size-sm) / var(--line-height-tight) var(--font-family-body);
-  --typography-button-small: var(--font-weight-medium) var(--font-size-xs) / var(--line-height-tight) var(--font-family-body);
+  --typography-button-large: var(--font-weight-medium) var(--font-size-base) /
+    var(--line-height-tight) var(--font-family-body);
+  --typography-button: var(--font-weight-medium) var(--font-size-sm) /
+    var(--line-height-tight) var(--font-family-body);
+  --typography-button-small: var(--font-weight-medium) var(--font-size-xs) /
+    var(--line-height-tight) var(--font-family-body);
 
   /* Code */
-  --typography-code: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-relaxed) var(--font-family-mono);
-  --typography-code-small: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-relaxed) var(--font-family-mono);
+  --typography-code: var(--font-weight-regular) var(--font-size-sm) /
+    var(--line-height-relaxed) var(--font-family-mono);
+  --typography-code-small: var(--font-weight-regular) var(--font-size-xs) /
+    var(--line-height-relaxed) var(--font-family-mono);
 
   /* Special Text Styles */
-  --typography-lead: var(--font-weight-regular) var(--font-size-xl) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-quote: var(--font-weight-light) var(--font-size-2xl) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-lead: var(--font-weight-regular) var(--font-size-xl) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-quote: var(--font-weight-light) var(--font-size-2xl) /
+    var(--line-height-relaxed) var(--font-family-body);
 }
