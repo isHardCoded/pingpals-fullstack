@@ -1,3 +1,9 @@
+import { Input } from './components/ui/input';
+
 export function App() {
-  return <></>;
+  return (
+    <>
+      <Input placeholder="Text" />
+    </>
+  );
 }
