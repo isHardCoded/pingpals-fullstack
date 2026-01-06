@@ -50,3 +50,9 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.disabled .input {
+  background: var(--disabled-bg);
+  border-color: var(--disabled-border);
+  color: var(--disabled-foreground);
+}

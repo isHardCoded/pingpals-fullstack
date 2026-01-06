@@ -1,87 +1,56 @@
 import React from 'react';
 import type { InputProps } from './types';
 import s from './styles.module.css';
+
 export const Input: React.FC<InputProps> = ({
   className,
-  placeholder,
+  label,
   value = '',
   onChange,
   error,
   type = 'text',
   name,
   id,
+  disabled,
+  placeholder,
 }) => {
-  const [isFocused, setIsFocused] = React.useState(false);
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-  };
-
+  const inputId = id || name;
   const hasError = Boolean(error);
-  const isEmpty = value === '';
-  const isActive = isFocused;
-  const showLabel = (isActive && placeholder) || value;
-  const showPlaceholder = isEmpty;
-
-  const rootClassName = () =>
-    [s.root, isActive && s.active, hasError && s.error, className]
-      .filter(Boolean)
-      .join(' ');
-
-  const inputClassName = () =>
-    [
-      s.input,
-      hasError && s.inputError,
-      showLabel && s.inputWithLabel,
-      !isEmpty && s.inputWithValue,
-    ]
-      .filter(Boolean)
-      .join(' ');
-
-  const inputWrapperClassName = () =>
-    [s.inputWrapper, isActive && s.inputWrapperActive]
-      .filter(Boolean)
-      .join(' ');
 
   return (
-    <div className={rootClassName()}>
-      {showLabel && (
-        <label
-          htmlFor={id || name}
-          className={`${s.label} ${!isActive ? s.labelInactive : ''}`}
-        >
-          {placeholder}
+    <div
+      className={[
+        s.root,
+        hasError && s.error,
+        disabled && s.disabled,
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      {label && (
+        <label htmlFor={inputId} className={s.label}>
+          {label}
         </label>
       )}
-      <div className={inputWrapperClassName()}>
-        <input
-          ref={inputRef}
-          id={id || name}
-          name={name}
-          type={type}
-          value={value}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder={showPlaceholder ? placeholder : ''}
-          className={inputClassName()}
-          aria-invalid={hasError}
-          aria-describedby={hasError ? `${id || name}-error` : undefined}
-        />
-      </div>
+
+      <input
+        id={inputId}
+        name={name}
+        type={type}
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
+        disabled={disabled}
+        placeholder={placeholder}
+        className={s.input}
+        aria-invalid={hasError}
+        aria-describedby={hasError ? `${inputId}-error` : undefined}
+      />
+
       {hasError && (
-        <div id={`${id || name}-error`} className={s.errorMessage} role="alert">
+        <p id={`${inputId}-error`} className={s.errorMessage} role="alert">
           {error}
-        </div>
+        </p>
       )}
     </div>
   );

@@ -23,6 +23,10 @@
   --color-danger-500: #ef4444;
   --color-danger-600: #dc2626;
 
+  --disabled-bg: var(--muted);
+  --disabled-border: var(--border);
+  --disabled-foreground: var(--muted-foreground);
+
 
   /* ============================= */
   /* 2. SEMANTIC TOKENS (shadcn)  */
