@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Modal } from "./components/ui/modal";
-import { Button } from "./components/ui/button";
 
 export function App() {
   const [open, setOpen] = useState(true)

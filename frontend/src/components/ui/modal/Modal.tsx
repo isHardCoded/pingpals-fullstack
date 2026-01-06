@@ -18,7 +18,9 @@ export function Modal({
   return (
     <div className={s.overlay} onClick={onClose}>
       <div
-        className={[s.root, className].filter(Boolean).join(' ')}
+        className={[s.root, s.fadeInScale, className]
+          .filter(Boolean)
+          .join(' ')}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

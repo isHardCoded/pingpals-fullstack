@@ -24,19 +24,21 @@
 }
 
 .title {
-  color: #14181F; /* TODO: Вынести цвет в переменную */
+  color: var(--title-color);
+  font: var(--typography-heading-6);
   font-size: 19px;
 }
 
 .description {
   color: #414750;
+  font: var(--typography-body);
   font-size: 16px;
 }
 
 .close {
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: 12px;
+  top: 12px;
   background: none;
   border: none;
   cursor: pointer;
@@ -46,4 +48,19 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fadeInScale {
+  animation: fadeInScale 0.1s ease forwards;
 }
