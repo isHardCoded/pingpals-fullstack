@@ -1,0 +1,53 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-8);
+  padding: var(--gap-8) var(--gap-16);
+  cursor: pointer;
+  user-select: none;
+
+  font: var(--typography-label);
+  color: #1a1a1a;
+
+  background-color: transparent;
+  border-radius: var(--radius-12);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.root:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.root:active {
+  background-color: var(--button-secondary-pressed);
+}
+
+.active {
+  background-color: var(--button-primary-default);
+  color: #ffffff;
+}
+
+.active:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.active:active {
+  background-color: var(--button-primary-pressed);
+}
+
+.tabBefore,
+.tabAfter {
+  display: flex;
+  align-items: center;
+}
+
+.active .tabBefore span,
+.active .tabAfter span {
+  opacity: 1;
+}
+
+.text {
+  white-space: nowrap;
+}
