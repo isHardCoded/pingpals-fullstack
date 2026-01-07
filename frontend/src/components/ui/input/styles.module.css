@@ -41,6 +41,7 @@
 
 .error .input {
   border-color: var(--destructive);
+  background-color: var(--destructive-background);
 }
 
 .error .input:focus {

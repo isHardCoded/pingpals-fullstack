@@ -20,6 +20,11 @@
   --color-brand-700: #0944a2;
 
   /* State */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
   --color-danger-500: #ef4444;
   --color-danger-600: #dc2626;
 
@@ -63,6 +68,7 @@
   --destructive: var(--color-danger-500);
   --destructive-hover: var(--color-danger-600);
   --destructive-foreground: var(--color-white);
+  --destructive-background: var(--color-danger-100);
 
 
   /* ============================= */
