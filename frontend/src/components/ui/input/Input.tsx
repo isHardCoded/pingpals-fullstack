@@ -18,6 +18,10 @@ export const Input: React.FC<InputProps> = ({
   const inputId = id || name;
   const hasError = Boolean(error);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.value);
+  };
+
   return (
     <div
       className={cn(
@@ -38,7 +42,7 @@ export const Input: React.FC<InputProps> = ({
         name={name}
         type={type}
         value={value}
-        onChange={(e) => onChange?.(e.target.value)}
+        onChange={handleChange}
         disabled={disabled}
         placeholder={placeholder}
         className={s.input}
