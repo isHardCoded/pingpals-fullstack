@@ -1,6 +1,7 @@
 import React from 'react';
 import type { InputProps } from './types';
 import s from './styles.module.css';
+import { cn } from '../../../shared/lib';
 
 export const Input: React.FC<InputProps> = ({
   className,
@@ -19,14 +20,12 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <div
-      className={[
+      className={cn(
         s.root,
         hasError && s.error,
         disabled && s.disabled,
         className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      )}
     >
       {label && (
         <label htmlFor={inputId} className={s.label}>
