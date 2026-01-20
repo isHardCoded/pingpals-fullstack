@@ -1,0 +1,7 @@
+import s from './styles.module.css';
+
+const Home = () => {
+  return <h1>Home Page</h1>;
+};
+
+export default Home;
