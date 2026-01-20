@@ -1,15 +1,91 @@
 :root {
-  /* Colors */
-  --title-color: #14181F;
+  /* ============================= */
+  /* 1. FOUNDATION (raw colors)   */
+  /* ============================= */
 
-  /* Button Colors */
-  --button-primary-default: #2871E6;
-  --button-primary-hover: #1759C4;
-  --button-primary-pressed: #0944A2;
+  /* Neutral */
+  --color-white: #ffffff;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-600: #475569;
+  --color-gray-900: #0f172a;
 
-  --button-secondary-default: #FFFFFF;
-  --button-secondary-hover: #EDF4FF;
-  --button-secondary-pressed: #C7DDFF;
+  /* Brand (PMS Blue) */
+  --color-brand-50: #edf4ff;
+  --color-brand-100: #c7ddff;
+  --color-brand-500: #2871e6;
+  --color-brand-600: #1759c4;
+  --color-brand-700: #0944a2;
+
+  /* State */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  --disabled-bg: var(--muted);
+  --disabled-border: var(--border);
+  --disabled-foreground: var(--muted-foreground);
+
+
+  /* ============================= */
+  /* 2. SEMANTIC TOKENS (shadcn)  */
+  /* ============================= */
+
+  --background: var(--color-white);
+  --foreground: var(--color-gray-900);
+
+  --card: var(--color-white);
+  --card-foreground: var(--color-gray-900);
+
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-gray-900);
+
+  /* Primary = BRAND */
+  --primary: var(--color-brand-500);
+  --primary-hover: var(--color-brand-600);
+  --primary-pressed: var(--color-brand-700);
+  --primary-foreground: var(--color-white);
+
+  /* Secondary = neutral UI */
+  --secondary: var(--color-gray-100);
+  --secondary-hover: var(--color-gray-200);
+  --secondary-pressed: var(--color-gray-300);
+  --secondary-foreground: var(--color-gray-900);
+
+  --muted: var(--color-gray-50);
+  --muted-foreground: var(--color-gray-600);
+
+  --border: var(--color-gray-200);
+  --input: var(--color-gray-200);
+  --ring: var(--color-brand-500);
+
+  --destructive: var(--color-danger-500);
+  --destructive-hover: var(--color-danger-600);
+  --destructive-foreground: var(--color-white);
+  --destructive-background: var(--color-danger-100);
+
+
+  /* ============================= */
+  /* 3. COMPONENT TOKENS          */
+  /* ============================= */
+
+  --button-primary-default: var(--primary);
+  --button-primary-hover: var(--primary-hover);
+  --button-primary-pressed: var(--primary-pressed);
+
+  --button-secondary-default: var(--secondary);
+  --button-secondary-hover: var(--secondary-hover);
+  --button-secondary-pressed: var(--secondary-pressed);
+
+  --input-default: var(--background);
+  --input-active: var(--ring);
+  --input-error: var(--destructive);
 
   /* Spacing (Gaps) */
   --gap-4: 4px;
@@ -92,38 +168,60 @@
   /* Typography Presets */
 
   /* Headings */
-  --typography-heading-1: var(--font-weight-black) var(--font-size-7xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-2: var(--font-weight-black) var(--font-size-6xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-3: var(--font-weight-bold) var(--font-size-5xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-4: var(--font-weight-bold) var(--font-size-4xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-5: var(--font-weight-semi-bold) var(--font-size-3xl) / var(--line-height-tight) var(--font-family-heading);
-  --typography-heading-6: var(--font-weight-semi-bold) var(--font-size-2xl) / var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-1: var(--font-weight-black) var(--font-size-7xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-2: var(--font-weight-black) var(--font-size-6xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-3: var(--font-weight-bold) var(--font-size-5xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-4: var(--font-weight-bold) var(--font-size-4xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-5: var(--font-weight-semi-bold) var(--font-size-3xl) /
+    var(--line-height-tight) var(--font-family-heading);
+  --typography-heading-6: var(--font-weight-semi-bold) var(--font-size-2xl) /
+    var(--line-height-tight) var(--font-family-heading);
 
   /* Body Text */
-  --typography-body-large: var(--font-weight-regular) var(--font-size-lg) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-body: var(--font-weight-regular) var(--font-size-base) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-body-small: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-body-xs: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-large: var(--font-weight-regular) var(--font-size-lg) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-body: var(--font-weight-regular) var(--font-size-base) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-small: var(--font-weight-regular) var(--font-size-sm) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-body-xs: var(--font-weight-regular) var(--font-size-xs) /
+    var(--line-height-relaxed) var(--font-family-body);
 
   /* Labels and UI Text */
-  --typography-label-large: var(--font-weight-medium) var(--font-size-base) / var(--line-height-normal) var(--font-family-body);
-  --typography-label: var(--font-weight-medium) var(--font-size-sm) / var(--line-height-normal) var(--font-family-body);
-  --typography-label-small: var(--font-weight-medium) var(--font-size-xs) / var(--line-height-normal) var(--font-family-body);
+  --typography-label-large: var(--font-weight-medium) var(--font-size-base) /
+    var(--line-height-normal) var(--font-family-body);
+  --typography-label: var(--font-weight-medium) var(--font-size-sm) /
+    var(--line-height-normal) var(--font-family-body);
+  --typography-label-small: var(--font-weight-medium) var(--font-size-xs) /
+    var(--line-height-normal) var(--font-family-body);
 
   /* Captions */
-  --typography-caption: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-normal) var(--font-family-body);
-  --typography-caption-small: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-normal) var(--font-family-body);
+  --typography-caption: var(--font-weight-regular) var(--font-size-sm) /
+    var(--line-height-normal) var(--font-family-body);
+  --typography-caption-small: var(--font-weight-regular) var(--font-size-xs) /
+    var(--line-height-normal) var(--font-family-body);
 
   /* Buttons */
-  --typography-button-large: var(--font-weight-medium) var(--font-size-base) / var(--line-height-tight) var(--font-family-body);
-  --typography-button: var(--font-weight-medium) var(--font-size-sm) / var(--line-height-tight) var(--font-family-body);
-  --typography-button-small: var(--font-weight-medium) var(--font-size-xs) / var(--line-height-tight) var(--font-family-body);
+  --typography-button-large: var(--font-weight-medium) var(--font-size-base) /
+    var(--line-height-tight) var(--font-family-body);
+  --typography-button: var(--font-weight-medium) var(--font-size-sm) /
+    var(--line-height-tight) var(--font-family-body);
+  --typography-button-small: var(--font-weight-medium) var(--font-size-xs) /
+    var(--line-height-tight) var(--font-family-body);
 
   /* Code */
-  --typography-code: var(--font-weight-regular) var(--font-size-sm) / var(--line-height-relaxed) var(--font-family-mono);
-  --typography-code-small: var(--font-weight-regular) var(--font-size-xs) / var(--line-height-relaxed) var(--font-family-mono);
+  --typography-code: var(--font-weight-regular) var(--font-size-sm) /
+    var(--line-height-relaxed) var(--font-family-mono);
+  --typography-code-small: var(--font-weight-regular) var(--font-size-xs) /
+    var(--line-height-relaxed) var(--font-family-mono);
 
   /* Special Text Styles */
-  --typography-lead: var(--font-weight-regular) var(--font-size-xl) / var(--line-height-relaxed) var(--font-family-body);
-  --typography-quote: var(--font-weight-light) var(--font-size-2xl) / var(--line-height-relaxed) var(--font-family-body);
+  --typography-lead: var(--font-weight-regular) var(--font-size-xl) /
+    var(--line-height-relaxed) var(--font-family-body);
+  --typography-quote: var(--font-weight-light) var(--font-size-2xl) /
+    var(--line-height-relaxed) var(--font-family-body);
 }

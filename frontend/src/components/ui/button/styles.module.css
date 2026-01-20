@@ -10,7 +10,6 @@
   text-decoration: none;
   color: inherit;
 
-
   gap: var(--gap-8);
   padding: var(--gap-8) var(--gap-24);
   border-radius: var(--radius-4);
@@ -21,35 +20,39 @@
 }
 
 .primary {
-    background-color: var(--button-primary-default);
-    color: white;
+  background-color: var(--button-primary-default);
+  color: white;
 }
 
 .primary:hover:not(:disabled) {
-    background-color: var(--button-primary-hover);
+  background-color: var(--button-primary-hover);
 }
 
 .primary:active:not(:disabled) {
-    background-color: var(--button-primary-pressed);
+  background-color: var(--button-primary-pressed);
 }
 
-
-
 .secondary {
-    background-color: white;
-    color: var(--button-primary-default);
-    border: 1px solid var(--button-primary-default);
+  background-color: white;
+  color: var(--button-primary-default);
+  border: 1px solid var(--button-primary-default);
 }
 
 .secondary:hover:not(:disabled) {
-    background-color: var(--button-secondary-hover);
+  background-color: var(--button-secondary-hover);
 }
 
 .secondary:active:not(:disabled) {
-    background-color: var(--button-secondary-pressed);
+  background-color: var(--button-secondary-pressed);
 }
 
 .root:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.disabled .input {
+  background: var(--disabled-bg);
+  border-color: var(--disabled-border);
+  color: var(--disabled-foreground);
 }

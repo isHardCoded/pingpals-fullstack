@@ -1,18 +1,44 @@
-import { useState } from "react";
-import { Modal } from "./components/ui/modal";
+import React from 'react';
+import { Input } from './components/ui/input';
 
 export function App() {
-  const [open, setOpen] = useState(true)
+  const [value, setValue] = React.useState<string>('');
 
-  return <>
-    <Modal isOpen={open} title="Заголовок" description="Это контет модалки" onClose={() => setOpen(false)}
-  secondaryAction={{
-    label: 'Отмена',
-    onClick: () => setOpen(false),
-  }}
-  primaryAction={{
-    label: 'Удалить',
-    onClick: () => alert('Удаление'),
-  }} />
-  </>
+  return (
+    <>
+      <div style={{ display: 'flex', gap: 15, margin: 40 }}>
+        <div style={{ maxWidth: 300 }}>
+          <Input
+            placeholder="Name"
+            label="Name"
+            name="Name"
+            value={value}
+            onChange={setValue}
+          />
+        </div>
+
+        <div style={{ maxWidth: 300 }}>
+          <Input
+            label="Surname"
+            placeholder="Surname"
+            name="Surname"
+            value={value}
+            onChange={setValue}
+            error="This field is required"
+          />
+        </div>
+
+        <div style={{ maxWidth: 300 }}>
+          <Input
+            label="Surname"
+            placeholder="Surname"
+            name="Surname"
+            value={value}
+            onChange={setValue}
+            disabled
+          />
+        </div>
+      </div>
+    </>
+  );
 }
