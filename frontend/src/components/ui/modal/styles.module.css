@@ -1,0 +1,66 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.root {
+  background-color: white;
+  border-radius: 4px;
+  min-width: 320px;
+  max-width: 90vw;
+  padding: 36px;
+  border: 1px solid #AEB3BC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+}
+
+.title {
+  color: var(--title-color);
+  font: var(--typography-heading-6);
+  font-size: 19px;
+}
+
+.description {
+  color: #414750;
+  font: var(--typography-body);
+  font-size: 16px;
+}
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fadeInScale {
+  animation: fadeInScale 0.1s ease forwards;
+}

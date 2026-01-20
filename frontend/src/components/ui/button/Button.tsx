@@ -1,6 +1,8 @@
 import type { ButtonProps } from './types';
 import s from './styles.module.css';
 
+import { cn } from '../../../shared/lib';
+
 export function Button({
   children,
   appearance = 'primary',
@@ -10,16 +12,11 @@ export function Button({
   href,
   className,
 }: ButtonProps) {
-  const buttonClassNames = () => {
-    const classes = [s.root, s[appearance], className].filter(Boolean);
-    return classes.join(' ');
-  };
-
   if (href) {
     return (
       <a
         href={href}
-        className={buttonClassNames()}
+        className={cn(s.root, s[appearance], className)}
         onClick={onClick}
         aria-disabled={disabled}
         role={disabled ? 'link' : undefined}
@@ -33,7 +30,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={buttonClassNames()}
+      className={cn(s.root, s[appearance], className)}
       disabled={disabled}
       onClick={onClick}
     >
