@@ -1,4 +1,7 @@
 :root {
+  /* Colors */
+  --title-color: #14181F;
+
   /* Button Colors */
   --button-primary-default: #2871E6;
   --button-primary-hover: #1759C4;
@@ -82,8 +85,8 @@
   --letter-spacing-widest: 0.1em;
 
   /* Font Families */
-  --font-family-body: 'Poppins', sans-serif;
-  --font-family-heading: 'Poppins', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Inter', sans-serif;
   --font-family-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 
   /* Typography Presets */
