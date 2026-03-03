@@ -1,4 +1,4 @@
-export type ButtonAppearance = 'primary' | 'secondary';
+export type ButtonAppearance = 'primary' | 'secondary' | 'link';
 
 export type ButtonProps = {
   children: React.ReactNode;

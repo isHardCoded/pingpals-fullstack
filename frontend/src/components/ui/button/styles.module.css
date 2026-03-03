@@ -51,6 +51,25 @@
   cursor: not-allowed;
 }
 
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  width: auto;
+  color: var(--primary);
+  font-weight: var(--font-weight-semi-bold);
+  cursor: pointer;
+  font: var(--typography-label);
+}
+
+.link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.link:active:not(:disabled) {
+  color: var(--primary-pressed);
+}
+
 .disabled .input {
   background: var(--disabled-bg);
   border-color: var(--disabled-border);
