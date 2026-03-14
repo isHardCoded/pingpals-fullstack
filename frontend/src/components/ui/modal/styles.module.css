@@ -17,7 +17,6 @@
   border: 1px solid #AEB3BC;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 24px;
   position: relative;

@@ -3,11 +3,17 @@
   margin: 0 auto;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--gap-24);
+}
+
 .title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--foreground);
-  margin-bottom: var(--gap-24);
   font-family: var(--font-family-heading);
 }
 

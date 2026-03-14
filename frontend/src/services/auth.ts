@@ -33,21 +33,21 @@ export interface RefreshResponse {
 
 export const AuthService = {
   async register(data: RegisterDto): Promise<User> {
-    const response = await httpClient.post(API_ENDPOINTS.REGISTER, data);
+    const response = await httpClient.post(API_ENDPOINTS.AUTH.REGISTER, data);
     return response.data.data;
   },
 
   async login(data: LoginDto): Promise<LoginResponse> {
-    const response = await httpClient.post(API_ENDPOINTS.LOGIN, data);
+    const response = await httpClient.post(API_ENDPOINTS.AUTH.LOGIN, data);
     return response.data;
   },
 
   async refresh(): Promise<RefreshResponse> {
-    const response = await httpClient.post(API_ENDPOINTS.REFRESH);
+    const response = await httpClient.post(API_ENDPOINTS.AUTH.REFRESH);
     return response.data;
   },
 
   async logout(): Promise<void> {
-    await httpClient.post(API_ENDPOINTS.LOGOUT);
+    await httpClient.post(API_ENDPOINTS.AUTH.LOGOUT);
   },
 };

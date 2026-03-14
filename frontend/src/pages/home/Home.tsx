@@ -1,4 +1,7 @@
-import { Heart, MessageSquare, Share } from 'lucide-react';
+import { useState } from 'react';
+import { Heart, MessageSquare, Share, Plus } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { CreatePostModal } from '../../features/create-post/ui';
 import s from './styles.module.css';
 
 const mockPosts = [
@@ -34,9 +37,22 @@ const mockPosts = [
 ];
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCreatePost = (title: string, content: string) => {
+    console.log('New post:', { title, content });
+    // Здесь будет вызов API
+  };
+
   return (
     <div className={s.home}>
-      <h1 className={s.title}>Feed</h1>
+      <div className={s.header}>
+        <h1 className={s.title}>Feed</h1>
+        <Button onClick={() => setIsModalOpen(true)} className={s.createButton}>
+          <Plus size={20} />
+          New post
+        </Button>
+      </div>
 
       <div className={s.posts}>
         {mockPosts.map((post) => (
@@ -68,6 +84,12 @@ const Home = () => {
           </article>
         ))}
       </div>
+
+      <CreatePostModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleCreatePost}
+      />
     </div>
   );
 };

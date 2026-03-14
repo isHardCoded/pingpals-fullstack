@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import { PostService } from '../services/post.js';
+import { CreatePostDto } from '../dto/post/create.js';
 
 export class PostController {
   constructor(private postService: PostService) {}
@@ -23,6 +24,21 @@ export class PostController {
     try {
       const post = await this.postService.getPostById(id);
       return res.status(200).json({ data: post });
+    } catch (e) {
+      next(e);
+    }
+  };
+
+  createPost = async (req: Request, res: Response, next: NextFunction) => {
+    const { title, content } = req.body as CreatePostDto;
+
+    if (!title || !content) {
+      return res.status(400).json({ message: 'Title or content are required' });
+    }
+
+    try {
+      const post = await this.postService.create({ title, content });
+      return res.status(201).json({ data: post });
     } catch (e) {
       next(e);
     }
