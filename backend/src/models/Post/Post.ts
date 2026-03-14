@@ -6,6 +6,8 @@ import type {
 } from 'sequelize';
 import { DataTypes, Model } from 'sequelize';
 
+import { User } from '../User/User.js';
+
 export class Post extends Model<
   InferAttributes<Post>,
   InferCreationAttributes<Post>
@@ -13,6 +15,11 @@ export class Post extends Model<
   declare id: CreationOptional<number>;
   declare title: string;
   declare content: string;
+  declare authorId: number;
+  declare likesCount: CreationOptional<number>;
+  declare commentsCount: CreationOptional<number>;
+
+  declare author?: User;
 }
 
 Post.init(
@@ -30,6 +37,22 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    authorId: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
+    },
+    likesCount: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      defaultValue: 0,
+    },
+    commentsCount: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      defaultValue: 0,
+    },
   },
   {
     sequelize,
@@ -37,3 +60,5 @@ Post.init(
     timestamps: true,
   },
 );
+
+Post.belongsTo(User, { foreignKey: 'authorId', as: 'author' });

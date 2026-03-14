@@ -1,47 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Heart, MessageSquare, Share, Plus } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 import { CreatePostModal } from '../../features/create-post/ui';
+import { PostService, type Post } from '../../services/post';
+import {
+  formatDate,
+  getAuthorName,
+  getAuthorAvatar,
+} from '../../shared/utils/post';
 import s from './styles.module.css';
-
-const mockPosts = [
-  {
-    id: 1,
-    author: 'John Doe',
-    avatar: '👤',
-    content: 'Just started playing ping pong! Anyone want to play?',
-    time: '2 hours ago',
-    likes: 5,
-    comments: 3,
-  },
-  {
-    id: 2,
-    author: 'Jane Smith',
-    avatar: '👤',
-    content:
-      'Had an amazing match today! 🏓 The weather was perfect for outdoor ping pong.',
-    time: '5 hours ago',
-    likes: 12,
-    comments: 7,
-  },
-  {
-    id: 3,
-    author: 'Mike Johnson',
-    avatar: '👤',
-    content:
-      'Looking for recommendations on a good ping pong table. Any suggestions?',
-    time: '1 day ago',
-    likes: 8,
-    comments: 15,
-  },
-];
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleCreatePost = (title: string, content: string) => {
-    console.log('New post:', { title, content });
-    // Здесь будет вызов API
+  const fetchPosts = async () => {
+    try {
+      const data = await PostService.getPosts();
+      setPosts(data);
+    } catch (error) {
+      console.error('Failed to fetch posts:', error);
+      setPosts([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const handleCreatePost = async (title: string, content: string) => {
+    setPosts((prev) => prev);
+    setIsModalOpen(false);
+
+    try {
+      await PostService.create({ title, content });
+      await fetchPosts();
+    } catch (error) {
+      console.error('Failed to create post:', error);
+    }
   };
 
   return (
@@ -55,34 +54,41 @@ const Home = () => {
       </div>
 
       <div className={s.posts}>
-        {mockPosts.map((post) => (
-          <article key={post.id} className={s.post}>
-            <div className={s.postHeader}>
-              <div className={s.avatar}>{post.avatar}</div>
-              <div className={s.postInfo}>
-                <span className={s.author}>{post.author}</span>
-                <span className={s.time}>{post.time}</span>
+        {isLoading ? (
+          <div className={s.loading}>Loading...</div>
+        ) : posts.length === 0 ? (
+          <div className={s.empty}>No posts yet</div>
+        ) : (
+          posts.map((post) => (
+            <article key={post.id} className={s.post}>
+              <div className={s.postHeader}>
+                <div className={s.avatar}>{getAuthorAvatar(post)}</div>
+                <div className={s.postInfo}>
+                  <span className={s.author}>{getAuthorName(post)}</span>
+                  <span className={s.time}>{formatDate(post.createdAt)}</span>
+                </div>
               </div>
-            </div>
 
-            <p className={s.content}>{post.content}</p>
+              <h3 className={s.postTitle}>{post.title}</h3>
+              <p className={s.content}>{post.content}</p>
 
-            <div className={s.postActions}>
-              <button className={s.action}>
-                <Heart size={16} />
-                <span>{post.likes}</span>
-              </button>
-              <button className={s.action}>
-                <MessageSquare size={16} />
-                <span>{post.comments}</span>
-              </button>
-              <button className={s.action}>
-                <Share size={16} />
-                <span>Share</span>
-              </button>
-            </div>
-          </article>
-        ))}
+              <div className={s.postActions}>
+                <button className={s.action}>
+                  <Heart size={16} />
+                  <span>{post.likesCount}</span>
+                </button>
+                <button className={s.action}>
+                  <MessageSquare size={16} />
+                  <span>{post.commentsCount}</span>
+                </button>
+                <button className={s.action}>
+                  <Share size={16} />
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+          ))
+        )}
       </div>
 
       <CreatePostModal

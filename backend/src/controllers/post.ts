@@ -30,6 +30,12 @@ export class PostController {
   };
 
   createPost = async (req: Request, res: Response, next: NextFunction) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
     const { title, content } = req.body as CreatePostDto;
 
     if (!title || !content) {
@@ -37,7 +43,11 @@ export class PostController {
     }
 
     try {
-      const post = await this.postService.create({ title, content });
+      const post = await this.postService.create({
+        title,
+        content,
+        authorId: userId,
+      });
       return res.status(201).json({ data: post });
     } catch (e) {
       next(e);

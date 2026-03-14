@@ -103,3 +103,31 @@
 .action:active {
   background: var(--color-gray-100);
 }
+
+.loading {
+  text-align: center;
+  padding: var(--gap-40);
+  color: var(--muted-foreground);
+  font-size: var(--font-size-base);
+}
+
+.createButton {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-8);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--gap-40);
+  color: var(--muted-foreground);
+  font-size: var(--font-size-base);
+}
+
+.postTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--foreground);
+  margin: 0 0 var(--gap-8);
+  font-family: var(--font-family-heading);
+}
